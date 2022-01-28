@@ -1,4 +1,6 @@
-// let bestCount = 0
+let roundStart = 0
+let roundFinish = 0
+let isFirstStart = true
 function J() {
     this.B = function(a) {
         for (var b = 0; 24 > b; b++)
@@ -199,6 +201,31 @@ var aa;
     }
     ,
     a.prototype.play = function(a) {
+        console.log("action:", a)
+        if (a === "move" && isFirstStart === true) {
+            roundStart = new Date()
+            isFirstStart = false
+        } else if (a === "checkmate") {
+            console.log("game over, check db for scores...")
+            roundFinish = new Date()
+
+            const timePass = Math.round((roundFinish - roundStart) / 10) / 100
+            console.log("time passed on the round:", timePass)
+            roundStart = 0
+            roundFinish = 0
+            isFirstStart = true
+            const posting = $.ajax({
+                url: "http://europe-west3-cmpe48-final.cloudfunctions.net/function-1",
+                dataType: 'jsonp',
+                method: 'POST',
+                crossDomain: true,
+                data: { score: timePass },
+                contentType: 'application/json',
+                success: function (result) {
+                    console.log('success:', result);
+                }
+            });
+        }
         var b = this.sounds[a]
           , c = b.length > 1 ? b[Math.floor(Math.random() * b.length)] : b[0];
         c.pool[c.tick].play(),
@@ -1344,10 +1371,10 @@ window.onload = function() {
         var d = Cb[c];
         // console.log('a', a)
         // console.log('db', db)
-        console.log('cb', Cb)
+        // console.log('cb', Cb)
         // console.log('Eb', Eb)
         // console.log('c', c)
-        console.log('d', d)
+        // console.log('d', d)
         d && (b.preventDefault(),
         Db[d] !== a && (Db[d] = a,
         "undefined" == typeof Eb[d] && (Eb[d] = -1),
