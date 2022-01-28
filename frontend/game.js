@@ -1344,10 +1344,10 @@ window.onload = function() {
         var d = Cb[c];
         // console.log('a', a)
         // console.log('db', db)
-        // console.log('cb', Cb)
+        console.log('cb', Cb)
         // console.log('Eb', Eb)
         // console.log('c', c)
-        // console.log('d', d)
+        console.log('d', d)
         d && (b.preventDefault(),
         Db[d] !== a && (Db[d] = a,
         "undefined" == typeof Eb[d] && (Eb[d] = -1),
