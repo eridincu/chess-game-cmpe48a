@@ -1,3 +1,4 @@
+// let bestCount = 0
 function J() {
     this.B = function(a) {
         for (var b = 0; 24 > b; b++)
@@ -1341,6 +1342,12 @@ window.onload = function() {
         var c = b.keyCode;
         b.charCode && !c && (c = b.charCode);
         var d = Cb[c];
+        // console.log('a', a)
+        // console.log('db', db)
+        // console.log('cb', Cb)
+        // console.log('Eb', Eb)
+        // console.log('c', c)
+        // console.log('d', d)
         d && (b.preventDefault(),
         Db[d] !== a && (Db[d] = a,
         "undefined" == typeof Eb[d] && (Eb[d] = -1),
