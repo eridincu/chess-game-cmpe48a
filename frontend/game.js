@@ -218,7 +218,6 @@ var aa;
                 url: "http://europe-west3-cmpe48-final.cloudfunctions.net/function-1",
                 dataType: 'json',
                 method: 'POST',
-                crossDomain: true,
                 data: JSON.stringify({ score: timePass }),
                 contentType: 'application/json',
                 success: function (result) {

@@ -104,11 +104,11 @@
 		</div>
 	</body>
 	<script>
+		console.log("Looking for best score...")
 		setInterval(async function() {
 			const posting = $.ajax("http://europe-west3-cmpe48-final.cloudfunctions.net/function-get-best-score", {
-                dataType: 'jsonp',
+                dataType: 'json',
                 method: 'GET',
-                crossDomain: true,
                 contentType: 'application/json',
             });
             // Put the results in a div
