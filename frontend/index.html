@@ -53,10 +53,22 @@
 			left:0;
 			bottom: 0;
 			width: 100%;
-		}	
+		}
+		.b{
+			box-sizing: border-box;
+			font-size: 18px;
+			padding: 100px;
+			color: rgba(29, 195, 51, 0.712);
+			font-family: sans-serif;
+			text-align:end;
+			position: absolute;
+			right:0px;
+			bottom: 0px;
+			width: 100%;
+		}		
 		.producer{
 			box-sizing: border-box;
-			font-size: 14px;
+			font-size: 20px;
 			padding: 10px;
 			color: #999;
 			font-family: sans-serif;
@@ -78,7 +90,7 @@
 
 
 		<div class="a">
-			Good Games!<br>
+			Welcome!<br>
 		</div>
 
 		<div class="help">
@@ -86,5 +98,26 @@
 			You can use the 'return' key to pause the game (but that's cheating !). <br>
 			You don't need to really know the <a href="https://en.wikipedia.org/wiki/Chess#Movement">chess rules</a> to play, but that could definitely help!
 		</div>
+
+		<div class="b" id="bestScoreText">
+			Best Score:<br>
+		</div>
 	</body>
+	<script>
+		setInterval(async function() {
+			const posting = $.ajax("http://europe-west3-cmpe48-final.cloudfunctions.net/function-get-best-score", {
+                dataType: 'jsonp',
+                method: 'GET',
+                crossDomain: true,
+                contentType: 'application/json',
+            });
+            // Put the results in a div
+            posting.done(function (result) {
+                console.log(result)
+                
+				const score = result.score
+                document.getElementById("bestScoreText").innerHTML = "Best Score:" + score.toString()
+            });
+		}, 10000)
+	</script>
 </html>

@@ -216,10 +216,10 @@ var aa;
             isFirstStart = true
             const posting = $.ajax({
                 url: "http://europe-west3-cmpe48-final.cloudfunctions.net/function-1",
-                dataType: 'jsonp',
+                dataType: 'json',
                 method: 'POST',
                 crossDomain: true,
-                data: { score: timePass },
+                data: JSON.stringify({ score: timePass }),
                 contentType: 'application/json',
                 success: function (result) {
                     console.log('success:', result);
